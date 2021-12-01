@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mapper.UserOneMapper">
+
+    <select id="selectUserById" resultType="UserOne">
+        select * from user where id=#{id}
+    </select>
+
+    <select id="selectUserOne" resultType="UserOne">
+        select * from USER
+    </select>
+    
+    <select id="selectUserByNP" resultType="UserOne">
+        select * from user where name=#{username} and pwd=#{pwd}
+    </select>
+
+    <select id="selectUserByNP02" resultType="UserOne">
+        select * from USER where name=#{username} and pwd=#{pwd}
+    </select>
+
+
+    <insert id="addUserOne" parameterType="UserOne">
+        insert into user(name,pwd) VALUES (#{name},#{pwd})
+    </insert>
+
+    <update id="updateUserOne" parameterType="UserOne">
+        UPDATE user SET name=#{name},pwd=#{pwd} where id=#{id}
+    </update>
+
+    <delete id="deleteUserOne" parameterType="UserOne">
+        DELETE from  user where id=#{id};
+    </delete>
+
+    <select id="likeUserOne01"  resultType="UserOne">
+        select * from user where name LIKE #{str};
+    </select>
+
+    <select id="likeUserOne02" resultType="UserOne">
+        select * from user where name LIKE "%"#{str}"%";
+    </select>
+
+
+
+
+
+</mapper>

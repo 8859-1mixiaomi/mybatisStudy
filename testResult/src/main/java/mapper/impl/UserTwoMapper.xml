@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="mapper.UserTwoMapper">
+
+    <resultMap id="resultUserInfo" type="UserTwo">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="pwd" property="password"/>
+    </resultMap>
+
+
+    <select id="selectUserById" resultType="UserTwo">
+        select * from user where id=#{id}
+    </select>
+
+    <select id="selectUserTwo" resultMap="resultUserInfo">
+        select * from user
+    </select>
+
+    <select id="selectUserTwoLimit" parameterType="map" resultMap="resultUserInfo">
+        select * from  user limit #{startIndex},#{pageSize};
+    </select>
+
+    <select id="selectUserRowBounds" resultMap="resultUserInfo">
+        select * from user
+    </select>
+
+</mapper>
